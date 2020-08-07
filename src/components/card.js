@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const Card = () => {
+const Card = (props) => {
+  const [hello, setHello] = useState(props)
+ 
+
   return (
     <div>
-      <p>I'm a Card</p>
+      <p>{props.hello} I'm a Card</p>
     </div>
   )
 }
