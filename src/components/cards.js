@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Card from './card'
 import Axios from 'axios'
 
@@ -15,11 +15,17 @@ const Cards = () => {
       return error
     })
   }
+
+  useEffect(() => {
+    console.log('hello')
+  })
+ 
+
  
   return (
     <div>
       <button onClick={deck}>Cards</button>
-      {cards ? cards.map((card) => { return <Card card={card.value}/> }) : <p>No Cards</p>}
+      {cards ? cards.map((card) => { return <Card key={card.value} card={card.value}/> }) : <p>No Cards</p>}
     </div>
   )
 }
