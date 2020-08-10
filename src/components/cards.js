@@ -7,16 +7,12 @@ const Cards = () => {
 
   useEffect(() => {
     if (cards === null) {
-    Axios.get(
-      `https://deckofcardsapi.com/api/deck/5fm1fdsovocs/draw/?count=1`
-      )
-    .then(response => {
-      const result = response.data.cards
-      setCards(result)
-    })
-    .catch(error => {
-      return error
-    })
+      Axios({
+        method: 'GET',
+        url: `https://deckofcardsapi.com/api/deck/5fm1fdsovocs/draw/?count=1`
+      }).then(response => {
+        setCards(response.data.cards)
+      })
     }
   })
 
