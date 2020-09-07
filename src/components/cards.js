@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Card from './card'
-import Axios from 'axios'
+import axios from 'axios'
+// import axios from '../__mocks__/axios' .
 
 
 
@@ -9,13 +10,19 @@ const Cards = () => {
 
   useEffect(() => {
     if (!cards) {
-      Axios({
-        method: 'GET',
-        url: `https://deckofcardsapi.com/api/deck/5fm1fdsovocs/draw/?count=1`
-      }).then(response => {
-        setCards(response.data.cards)
-      })
-    }
+
+      const loadData = async () => {
+        const response = await axios.get(`https://deckofcardsapi.com/api/deck/5fm1fdsovocs/draw/?count=1`)
+        setCards(response.data.cards) 
+      }
+      //   Axios({
+        //   method: 'GET',
+        //   url: `https://deckofcardsapi.com/api/deck/5fm1fdsovocs/draw/?count=1`
+        // }).then(response => {
+          //   setCards(response.data.cards)
+          // })
+          loadData()
+        }
   })
 
   const displayCards = () => {
